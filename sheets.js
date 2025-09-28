@@ -1,7 +1,12 @@
 import { google } from "googleapis";
 
+const credentials = JSON.parse(
+  Buffer.from(process.env.GOOGLE_CREDENTIALS_BASE64, "base64").toString("utf8")
+);
+
 const auth = new google.auth.GoogleAuth({
-  keyFile: "credentials.json", // download from Google Cloud
+  credentials,
+  //keyFile: "credentials.json", // download from Google Cloud
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
